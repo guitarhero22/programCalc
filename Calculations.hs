@@ -50,3 +50,16 @@ prune e ((_, e1):steps1) ((_, e2):steps2)
     | e1 == e2 = prune e1 steps1 steps2
 prune e steps1 steps2 = rsteps ++ steps2
         where Calc _ rsteps = reverseCalc (Calc e steps1)
+
+instance Show Calculation where
+    showsPrec p (Calc e ((l, e1):ss)) = 
+            showString (if p == 0 then "" else "    ") 
+        .   showsPrec 0 e
+        .   showString "\n  = {"
+        .   showString l
+        .   showString "}\n"
+        .   showsPrec 1 (Calc e1 ss)
+
+    showsPrec p (Calc e []) = 
+            showString (if p == 0 then "" else "    ") 
+        .   showsPrec 0 e

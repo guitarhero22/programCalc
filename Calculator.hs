@@ -1,5 +1,6 @@
-module Main (
-    main
+module Calculator (
+    simplify,
+    prove
 )
 where
 
