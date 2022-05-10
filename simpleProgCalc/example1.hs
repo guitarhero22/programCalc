@@ -18,4 +18,4 @@ laws1 = [
 
 specification1 = "filter p . map f"
 
-derivation1 = simplify laws specification
+derivation1 = simplify laws1 specification1
